@@ -1,0 +1,122 @@
+{
+    "slug": "event-crm",
+    "name": "Event CRM — Deal Pipeline",
+    "version": "1.0.0",
+    "description": "Lightweight deal pipeline for event sales teams. Track sponsor prospects, exhibitor outreach, and partnership deals with staleness alerts, deal scoring, and weighted pipeline value.",
+    "category": "analytics",
+    "difficulty": "intermediate",
+    "requires_backend": true,
+    "data_space": "event-sales",
+    "is_published": false,
+    "author": "Visual Hive",
+    "source_repo": "https://github.com/Visual-Hive/eventhive-tool-event-crm",
+    "tool_file": "tool.html",
+    "thumbnail": "thumbnail.png",
+    "backend_config": {
+        "resources": [
+            "deals",
+            "activities"
+        ]
+    },
+    "config_schema": {
+        "sections": [
+            {
+                "id": "branding",
+                "title": "Branding",
+                "description": "Customise to match your company or event brand.",
+                "fields": [
+                    {
+                        "id": "companyName",
+                        "type": "text",
+                        "label": "Company / Organisation Name",
+                        "placeholder": "e.g. Momentum Events",
+                        "required": true,
+                        "default": "My Company"
+                    },
+                    {
+                        "id": "primaryColor",
+                        "type": "color",
+                        "label": "Primary Brand Colour",
+                        "default": "#2563eb"
+                    },
+                    {
+                        "id": "logoUrl",
+                        "type": "url",
+                        "label": "Logo URL",
+                        "description": "Optional. Displayed in the header.",
+                        "required": false
+                    }
+                ]
+            },
+            {
+                "id": "pipeline",
+                "title": "Pipeline",
+                "fields": [
+                    {
+                        "id": "currency",
+                        "type": "select",
+                        "label": "Currency",
+                        "options": [
+                            {
+                                "label": "EUR (€)",
+                                "value": "EUR"
+                            },
+                            {
+                                "label": "GBP (£)",
+                                "value": "GBP"
+                            },
+                            {
+                                "label": "USD ($)",
+                                "value": "USD"
+                            }
+                        ],
+                        "default": "EUR"
+                    }
+                ]
+            },
+            {
+                "id": "staleness",
+                "title": "Staleness Thresholds",
+                "description": "Configure when deal cards show warnings.",
+                "fields": [
+                    {
+                        "id": "freshDays",
+                        "type": "number",
+                        "label": "Fresh (days)",
+                        "description": "Days since last contact before a deal is no longer considered fresh.",
+                        "min": 1,
+                        "max": 30,
+                        "default": 3
+                    },
+                    {
+                        "id": "staleDays",
+                        "type": "number",
+                        "label": "Stale Warning (days)",
+                        "description": "Days before deal shows a yellow staleness warning.",
+                        "min": 1,
+                        "max": 60,
+                        "default": 7
+                    },
+                    {
+                        "id": "criticalDays",
+                        "type": "number",
+                        "label": "Critical Warning (days)",
+                        "description": "Days before deal shows a red 'at risk' warning.",
+                        "min": 1,
+                        "max": 90,
+                        "default": 14
+                    }
+                ]
+            }
+        ]
+    },
+    "default_config": {
+        "companyName": "My Company",
+        "primaryColor": "#2563eb",
+        "logoUrl": "",
+        "currency": "EUR",
+        "freshDays": 3,
+        "staleDays": 7,
+        "criticalDays": 14
+    }
+}
